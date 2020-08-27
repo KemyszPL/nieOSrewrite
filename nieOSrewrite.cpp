@@ -12,6 +12,8 @@
 #include <sys/select.h>
 #include <unistd.h>
 #include <errno.h>
+#include <chrono>
+#include <thread>
 
 bool g_has_terminal = false; // Check this global variable before ncurses calls
 
@@ -37,6 +39,11 @@ bool ensure_debugger_attached_woraround(int timeout_ms)
     return true;
 }
 
+void sleep(int time) // defines sleep() command
+{
+    std::this_thread::sleep_for(std::chrono::milliseconds(time));
+}
+
 int main(int argc, const char * argv[]) {
     // insert code here...
     if (!ensure_debugger_attached_woraround(700))
@@ -60,13 +67,66 @@ int main(int argc, const char * argv[]) {
         start_y = start_x = 0;
         
         WINDOW * win = newwin(height, width, start_y, start_x);
-        WINDOW * loadbox = newwin(3, 10, 12, 19); // this window exists ONLY for the loading border
+        WINDOW * loadbox = newwin(3, 40, 12, 19); // this window exists ONLY for the loading border
         refresh();
         wrefresh(win);
         wrefresh(loadbox);
         mvwprintw(win, 9, 33, "nieOS");
         wrefresh(win);
         box(loadbox, 0, 0);
+        mvwprintw(loadbox, 1, 1, "#");
+        wrefresh(loadbox);
+        sleep(200);
+        wprintw(loadbox, "####");
+        wrefresh(loadbox);
+        sleep(300);
+        wprintw(loadbox, "###");
+        wrefresh(loadbox);
+        sleep(370);
+        wprintw(loadbox, "#####");
+        wrefresh(loadbox);
+        sleep(140);
+        wprintw(loadbox, "#");
+        wrefresh(loadbox);
+        sleep(574);
+        wprintw(loadbox, "######");
+        wrefresh(loadbox);
+        sleep(300);
+        wprintw(loadbox, "##");
+        wrefresh(loadbox);
+        sleep(300);
+        wprintw(loadbox, "#");
+        wrefresh(loadbox);
+        sleep(200);
+        wprintw(loadbox, "####");
+        wrefresh(loadbox);
+        sleep(123);
+        wprintw(loadbox, "###");
+        wrefresh(loadbox);
+        sleep(100);
+        wprintw(loadbox, "#");
+        wrefresh(loadbox);
+        sleep(100);
+        wprintw(loadbox, "#");
+        wrefresh(loadbox);
+        sleep(100);
+        wprintw(loadbox, "#");
+        wrefresh(loadbox);
+        sleep(100);
+        wprintw(loadbox, "#");
+        wrefresh(loadbox);
+        sleep(100);
+        wprintw(loadbox, "#");
+        wrefresh(loadbox);
+        sleep(100);
+        wprintw(loadbox, "#");
+        wrefresh(loadbox);
+        sleep(100);
+        wprintw(loadbox, "#");
+        wrefresh(loadbox);
+        sleep(100);
+        wprintw(loadbox, "#");
+        move(13, 57);
         wrefresh(loadbox);
         getch();
     }
