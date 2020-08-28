@@ -165,7 +165,7 @@ int main(int argc, const char * argv[]) {
         wrefresh(loadbox);
         curs_set(0); // makes the cursor hidden
         mvwprintw(win, 9, 33, "nieOS");
-        mvwprintw(win, 23, 69, "Build 39");
+        mvwprintw(win, 23, 69, "Build 40");
         wrefresh(win);
         box(loadbox, 0, 0);
         mvwprintw(loadbox, 1, 1, "#");
@@ -224,7 +224,7 @@ int main(int argc, const char * argv[]) {
         sleep(431);
         wclear(loadbox);
         wclear(win);
-        mvwprintw(win, 23, 69, "Build 39");
+        mvwprintw(win, 23, 69, "Build 40");
         wrefresh(loadbox);
         wrefresh(win);
         move(0, 0);
