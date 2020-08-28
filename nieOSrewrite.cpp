@@ -79,6 +79,50 @@ void doNothing() {
     
 }
 
+/* possible editor arguments:
+ * 0 - open editor with no file
+ * 1 - tries to open dir.com
+ */
+
+void editor(int fileToOpen) {
+    WINDOW * editborder = newwin(21, 80, 0, 0);
+    WINDOW * editcomline = newwin(3, 80, 21, 0);
+    box(editborder, 0, 0);             /* does the setup for basically a program withn a program (wait... nieOS *is* a program withn a program... program withn a program-ception!)*/
+    wrefresh(editborder);
+    char* editcom = new char[160];
+    scrollok(editcomline, 1);
+    idlok(editcomline, 1);
+    wmove(editcomline, 0, 0);
+    switch (fileToOpen) {
+        case 1:
+            mvwprintw(editborder, 0, 25, "nieOS editor - dir.com (read only)");
+            mvwprintw(editborder, 1, 1, "Sȼ:࣎Vރش񑨐nޭ�뎬h솁򂴜탕ҕj𛁵𝟥ֈkߞ[񸵦�@6򣯏񭿪۫0\nԠّU𬣩k7􀥇뺜ռ动sϓpX߲{-⮧򣹉񀘧Ô�ǋ񧇼񞔆d󊓞F𺿎ƂЩ󈚱뢨ÂoRP񙢱*mꜸ􏥔ᆪ4ԉ󱹡ϼᮻ񪁾k혂뵧㱉f⿡ؤǖś䯵>񱈩Ș򥾗\n>򚐠ꉅȢ!骁񔘐-󅓃%E$;ɾ𧶶𥩣xmڤ#𚷗nҤқ馾񣞔ೄ킭򧣅Ѝ\n>ہ򔍷ґ򗵡p{򌶑i!y񥑶以ҷ秛󑛭藂񣛫跠𨀚󆲡Ô󯣺Ƹ͖֡񹍖㥧giѓ\n񪐄􂼬񶵉h󺤚𰄸 _⻏ѯŤ૜UΫq΍􎧢ﺨĤ들1󑡃󡢒{k⨗󧼻􃤐򬗮XoE󴖿˝􄯶ƭԃ-X񕑎̅䷞𽧳ᔞ9І^U窨栉®Ɉ䇯óƺށΩ񑙗∅+󛧍򣏬M𶏷ʏ穋I񄫫Ϗ騝ڒ򏄯k㹿p貞O񂮬񯏗%~񵡗@ʷ񿨆򼌒ِZ쫶8ߝ");
+            wrefresh(editborder);
+            break;
+            
+        default:
+            mvwprintw(editborder, 0, 25, "nieOS editor - no file (read only)");
+            wrefresh(editborder);
+            break;
+    }
+    while(true) {
+        wprintw(editcomline, "EDIT: ");
+        wrefresh(editcomline);
+        wgetstr(editcomline, editcom);
+        if (strcmp(editcom, "exit") == 0) {
+            wclear(editborder);
+            wclear(editcomline);
+            wrefresh(editborder);
+            wrefresh(editcomline);
+            break;
+        }
+        else {
+            wprintw(editcomline, "Unknown command.\n");
+        }
+    }
+}
+
+
 int main(int argc, const char * argv[]) {
     // insert code here...
     if (!ensure_debugger_attached_woraround(700))
@@ -108,7 +152,7 @@ int main(int argc, const char * argv[]) {
         wrefresh(loadbox);
         curs_set(0); // makes the cursor hidden
         mvwprintw(win, 9, 33, "nieOS");
-        mvwprintw(win, 23, 69, "Build 29");
+        mvwprintw(win, 23, 69, "Build 36");
         wrefresh(win);
         box(loadbox, 0, 0);
         mvwprintw(loadbox, 1, 1, "#");
@@ -167,17 +211,13 @@ int main(int argc, const char * argv[]) {
         sleep(431);
         wclear(loadbox);
         wclear(win);
-        mvwprintw(win, 23, 69, "Build 29");
+        mvwprintw(win, 23, 69, "Build 36");
         wrefresh(loadbox);
         wrefresh(win);
         move(0, 0);
         switch (login()) {
-            case 0:
-                doNothing();
-                break;
-
             case 1:
-                throw std::exception();
+                std::exit(0);
                 break;
             
             default:
@@ -186,8 +226,7 @@ int main(int argc, const char * argv[]) {
         wmove(win, 0, 0);
         scrollok(win, 1);
         idlok(win, 1);
-        WINDOW * editborder = newwin(21, 80, 0, 0);
-        WINDOW * editcomline = newwin(3, 80, 21, 0);
+        curs_set(1);
         while (true) {
             char* command = new char[160];
             wprintw(win, "C:/");
@@ -200,27 +239,14 @@ int main(int argc, const char * argv[]) {
                 std::exit(0);
             }
             else if (strcmp(command, "dir") == 0 || strcmp(command, "ls") == 0 || strcmp(command, "dir.com") == 0 || strcmp(command, "ls.com") == 0 ) {
-                wprintw(win, "14:03  28.08.2020    <FOLDER>    OS\n14:03  28.08.2020          1K    exit.com\n14:04  28.08.2020        200K    dir.com\n14:24  28.08.2020          1M    aliases.dat\n");
+                wprintw(win, "17:00  28.08.2020    <FOLDER>    OS\n14:03  28.08.2020          1K    exit.com\n14:04  28.08.2020        200K    dir.com\n14:24  28.08.2020          1M    aliases.dat\n17:00  28.08.2020          4M    edit.com\n17:00  28.08.2020        200K    help.com\n");
             }
             else if (strcmp(command, "edit") == 0 || strcmp(command, "edit.com") == 0) {
-                box(editborder, 0, 0);             /* does the setup for basically a program withn a program */
-                wrefresh(editborder);
-                char* editcom = new char[160];
-                scrollok(editcomline, 1);
-                idlok(editcomline, 1);
+                editor(0);
                 wclear(win);
-                wmove(editcomline, 0, 0);
-                while(true) {
-                    wprintw(editcomline, "EDIT: ");
-                    wrefresh(editcomline);
-                    wgetstr(editcomline, editcom);
-                    if (strcmp(editcom, "exit") == 0) {
-                        break;
-                    }
-                    else {
-                        wprintw(editcomline, "Unknown command.\n");
-                    }
-                }
+            }
+            else if (strcmp(command, "edit dir.com") == 0) {
+                editor(1);
             }
             else {
                 wprintw(win, "Command not found\n");
