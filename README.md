@@ -8,3 +8,5 @@ Features:
 Commands:
   - exit
   - help
+  - edit (work in progress)
+  - dir/ls
