@@ -108,6 +108,7 @@ int main(int argc, const char * argv[]) {
         wrefresh(loadbox);
         curs_set(0); // makes the cursor hidden
         mvwprintw(win, 9, 33, "nieOS");
+        mvwprintw(win, 23, 69, "Build 12");
         wrefresh(win);
         box(loadbox, 0, 0);
         mvwprintw(loadbox, 1, 1, "#");
@@ -166,6 +167,7 @@ int main(int argc, const char * argv[]) {
         sleep(431);
         wclear(loadbox);
         wclear(win);
+        mvwprintw(win, 23, 69, "Build 12");
         wrefresh(loadbox);
         wrefresh(win);
         move(0, 0);
@@ -180,6 +182,17 @@ int main(int argc, const char * argv[]) {
             
             default:
                 break;
+        }
+        wmove(win, 0, 0);
+        while (true) {
+            char* command = new char[160];
+            wprintw(win, "C:/");
+            wrefresh(win);
+            wgetstr(win, command);
+            if (strcmp(command, "help") == 0) {
+                wprintw(win, "There aren't any commands implemented yet. (except help)\n");
+                wrefresh(win);
+            }
         }
         getch();
     }
