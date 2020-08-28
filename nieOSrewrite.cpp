@@ -108,7 +108,7 @@ int main(int argc, const char * argv[]) {
         wrefresh(loadbox);
         curs_set(0); // makes the cursor hidden
         mvwprintw(win, 9, 33, "nieOS");
-        mvwprintw(win, 23, 69, "Build 26");
+        mvwprintw(win, 23, 69, "Build 29");
         wrefresh(win);
         box(loadbox, 0, 0);
         mvwprintw(loadbox, 1, 1, "#");
@@ -167,7 +167,7 @@ int main(int argc, const char * argv[]) {
         sleep(431);
         wclear(loadbox);
         wclear(win);
-        mvwprintw(win, 23, 69, "Build 26");
+        mvwprintw(win, 23, 69, "Build 29");
         wrefresh(loadbox);
         wrefresh(win);
         move(0, 0);
@@ -187,7 +187,7 @@ int main(int argc, const char * argv[]) {
         scrollok(win, 1);
         idlok(win, 1);
         WINDOW * editborder = newwin(21, 80, 0, 0);
-        WINDOW * editwin = newwin(24, 80, 0, 0);
+        WINDOW * editcomline = newwin(3, 80, 21, 0);
         while (true) {
             char* command = new char[160];
             wprintw(win, "C:/");
@@ -206,15 +206,19 @@ int main(int argc, const char * argv[]) {
                 box(editborder, 0, 0);             /* does the setup for basically a program withn a program */
                 wrefresh(editborder);
                 char* editcom = new char[160];
-                scrollok(editwin, 0);
-                idlok(editwin, 0);
+                scrollok(editcomline, 1);
+                idlok(editcomline, 1);
                 wclear(win);
+                wmove(editcomline, 0, 0);
                 while(true) {
-                    mvwprintw(editwin, 21, 0, "EDIT: ");
-                    wrefresh(editwin);
-                    mvwgetstr(editwin, 21, 5, editcom);
+                    wprintw(editcomline, "EDIT: ");
+                    wrefresh(editcomline);
+                    wgetstr(editcomline, editcom);
                     if (strcmp(editcom, "exit") == 0) {
                         break;
+                    }
+                    else {
+                        wprintw(editcomline, "Unknown command.\n");
                     }
                 }
             }
