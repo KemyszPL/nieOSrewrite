@@ -3,4 +3,4 @@
 This is a rewrite of nieOS using ncurses and (hopefully) more efficient methods.
 
 Things currently implemented:
-- Basically nothing
+- The login window
