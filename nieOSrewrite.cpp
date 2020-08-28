@@ -35,13 +35,48 @@ bool ensure_debugger_attached_woraround(int timeout_ms)
         fprintf(stderr, "Unexpected error %d", errno);
         return false;
     }
-
     return true;
 }
 
 void sleep(int time) // defines sleep() command
 {
     std::this_thread::sleep_for(std::chrono::milliseconds(time));
+}
+
+int login() {
+    curs_set(1); // shows the cursor
+    echo(); // makes user input visible
+    char* userName = new char[160];
+    char* userPassword = new char[160];
+    WINDOW * loginwin = newwin(10, 30, 7, 24);
+    int logfail(0);
+    box(loginwin, 1, 0);
+    mvwprintw(loginwin, 3, 5, "User:");
+    wrefresh(loginwin);
+    mvwgetstr(loginwin, 3, 10, userName);
+    curs_set(0);
+    if (strcmp(userName, "nie") == 0) {
+        curs_set(1);
+        mvwprintw(loginwin, 5, 5, "Password:");
+        wrefresh(loginwin);
+        mvwgetstr(loginwin, 5, 14, userPassword);
+        curs_set(0);
+        if (strcmp(userPassword, "nie") == 0) {
+            mvwprintw(loginwin, 8, 6, "Welcome to nieOS");
+            wrefresh(loginwin);
+            logfail = 0;
+        }
+    }
+    else {
+        mvwprintw(loginwin, 8, 4, "Wrong username/password.");
+        wrefresh(loginwin);
+        logfail = 1;
+    }
+    return logfail;
+}
+
+void doNothing() {
+    
 }
 
 int main(int argc, const char * argv[]) {
@@ -71,13 +106,14 @@ int main(int argc, const char * argv[]) {
         refresh();
         wrefresh(win);
         wrefresh(loadbox);
+        curs_set(0); // makes the cursor hidden
         mvwprintw(win, 9, 33, "nieOS");
         wrefresh(win);
         box(loadbox, 0, 0);
         mvwprintw(loadbox, 1, 1, "#");
         wrefresh(loadbox);
         sleep(200);
-        wprintw(loadbox, "####");
+        wprintw(loadbox, "####"); // hooray for fake loading
         wrefresh(loadbox);
         sleep(300);
         wprintw(loadbox, "###");
@@ -126,8 +162,25 @@ int main(int argc, const char * argv[]) {
         wrefresh(loadbox);
         sleep(100);
         wprintw(loadbox, "#");
-        move(13, 57);
+        wrefresh(loadbox); // end of fake loading
+        sleep(431);
+        wclear(loadbox);
+        wclear(win);
         wrefresh(loadbox);
+        wrefresh(win);
+        move(0, 0);
+        switch (login()) {
+            case 0:
+                doNothing();
+                break;
+
+            case 1:
+                throw std::exception();
+                break;
+            
+            default:
+                break;
+        }
         getch();
     }
     return 0;
