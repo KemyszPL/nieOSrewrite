@@ -190,8 +190,11 @@ int main(int argc, const char * argv[]) {
             wrefresh(win);
             wgetstr(win, command);
             if (strcmp(command, "help") == 0) {
-                wprintw(win, "There aren't any commands implemented yet. (except help)\n");
+                wprintw(win, "exit\n");
                 wrefresh(win);
+            }
+            else if (strcmp(command, "exit") == 0) {
+                std::exit(1);
             }
         }
         getch();
