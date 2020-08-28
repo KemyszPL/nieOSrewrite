@@ -108,7 +108,7 @@ int main(int argc, const char * argv[]) {
         wrefresh(loadbox);
         curs_set(0); // makes the cursor hidden
         mvwprintw(win, 9, 33, "nieOS");
-        mvwprintw(win, 23, 69, "Build 12");
+        mvwprintw(win, 23, 69, "Build 26");
         wrefresh(win);
         box(loadbox, 0, 0);
         mvwprintw(loadbox, 1, 1, "#");
@@ -167,7 +167,7 @@ int main(int argc, const char * argv[]) {
         sleep(431);
         wclear(loadbox);
         wclear(win);
-        mvwprintw(win, 23, 69, "Build 12");
+        mvwprintw(win, 23, 69, "Build 26");
         wrefresh(loadbox);
         wrefresh(win);
         move(0, 0);
@@ -184,17 +184,42 @@ int main(int argc, const char * argv[]) {
                 break;
         }
         wmove(win, 0, 0);
+        scrollok(win, 1);
+        idlok(win, 1);
+        WINDOW * editborder = newwin(21, 80, 0, 0);
+        WINDOW * editwin = newwin(24, 80, 0, 0);
         while (true) {
             char* command = new char[160];
             wprintw(win, "C:/");
             wrefresh(win);
             wgetstr(win, command);
             if (strcmp(command, "help") == 0) {
-                wprintw(win, "exit\n");
-                wrefresh(win);
+                wprintw(win, "exit  help  dir  ls\n");
             }
             else if (strcmp(command, "exit") == 0) {
-                std::exit(1);
+                std::exit(0);
+            }
+            else if (strcmp(command, "dir") == 0 || strcmp(command, "ls") == 0 || strcmp(command, "dir.com") == 0 || strcmp(command, "ls.com") == 0 ) {
+                wprintw(win, "14:03  28.08.2020    <FOLDER>    OS\n14:03  28.08.2020          1K    exit.com\n14:04  28.08.2020        200K    dir.com\n14:24  28.08.2020          1M    aliases.dat\n");
+            }
+            else if (strcmp(command, "edit") == 0 || strcmp(command, "edit.com") == 0) {
+                box(editborder, 0, 0);             /* does the setup for basically a program withn a program */
+                wrefresh(editborder);
+                char* editcom = new char[160];
+                scrollok(editwin, 0);
+                idlok(editwin, 0);
+                wclear(win);
+                while(true) {
+                    mvwprintw(editwin, 21, 0, "EDIT: ");
+                    wrefresh(editwin);
+                    mvwgetstr(editwin, 21, 5, editcom);
+                    if (strcmp(editcom, "exit") == 0) {
+                        break;
+                    }
+                }
+            }
+            else {
+                wprintw(win, "Command not found\n");
             }
         }
         getch();
