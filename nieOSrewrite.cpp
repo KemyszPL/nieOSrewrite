@@ -87,7 +87,7 @@ void doNothing() {
  * 3 - tries to open exit.com
  * 4 - tries to open edit.com
  * 5 - tries to open help.com
- * 6 - tries to open CDPlay.com
+ * 6 - tries to open CDPlay.prg
  */
 
 void editor(int fileToOpen) {
@@ -141,7 +141,7 @@ void editor(int fileToOpen) {
             break;
             
         case 6:
-            mvwprintw(editborder, 0, 25, "nieOS editor - CDPlay.com (read only)");
+            mvwprintw(editborder, 0, 25, "nieOS editor - CDPlay.prg (read only)");
             mvwprintw(editcontent, 0, 0, "©ś©Żńę®Ļ©ń¨Ļ∑ąśńžŽžłĪŚŽńÓžŽĪÓ—ŽžýÝýÝŽųžÓųĘ„‚ťžŃ‹°ŤŘŕ‹ÓŤ°Řž◊ŃĆŹ◊ĆŹÚŃ◊ŁĆŃŚĄŃť„ŃőŤŃ„ťžÔŽŚłłŽŚ”»’ž”ŽŚžŽ—ÝžÝŽŚŁ");
             wrefresh(editborder);
             wrefresh(editcontent);
@@ -207,7 +207,7 @@ int main(int argc, const char * argv[]) {
         wrefresh(loadbox);
         curs_set(0); // makes the cursor hidden
         mvwprintw(win, 9, 33, "nieOS");
-        mvwprintw(win, 23, 69, "Build 60");
+        mvwprintw(win, 23, 69, "Build 61");
         wrefresh(win);
         box(loadbox, 0, 0);
         mvwprintw(loadbox, 1, 1, "#");
@@ -266,7 +266,7 @@ int main(int argc, const char * argv[]) {
         sleep(431);
         wclear(loadbox);
         wclear(win);
-        mvwprintw(win, 23, 69, "Build 60");
+        mvwprintw(win, 23, 69, "Build 61");
         wrefresh(loadbox);
         wrefresh(win);
         move(0, 0);
@@ -302,7 +302,7 @@ int main(int argc, const char * argv[]) {
                 std::exit(0);
             }
             else if (strcmp(command, "dir") == 0 || strcmp(command, "ls") == 0 || strcmp(command, "dir.com") == 0 || strcmp(command, "ls.com") == 0 ) {
-                wprintw(win, "17:00  28.08.2020    <FOLDER>    OS\n14:03  28.08.2020          1K    exit.com\n14:04  28.08.2020        200K    dir.com\n14:24  28.08.2020          1M    aliases.dat\n17:00  28.08.2020          4M    edit.com\n17:00  28.08.2020        200K    help.com\n17:00  28.08.2020         10M    CDPlay.com\n");
+                wprintw(win, "17:00  28.08.2020    <FOLDER>    OS\n14:03  28.08.2020          1K    exit.com\n14:04  28.08.2020        200K    dir.com\n14:24  28.08.2020          1M    aliases.dat\n17:00  28.08.2020          4M    edit.com\n17:00  28.08.2020        200K    help.com\n17:00  28.08.2020         10M    CDPlay.prg\n");
             }
             // edit and the files it can open
             else if (strcmp(command, "edit") == 0 || strcmp(command, "edit.com") == 0) {
@@ -324,7 +324,7 @@ int main(int argc, const char * argv[]) {
             else if (strcmp(command, "edit help.com") == 0 || strcmp(command, "edit.com help.com") == 0) {
                 editor(5);
             }
-            else if (strcmp(command, "edit CDPlay.com") == 0 || strcmp(command, "edit.com CDPlay.com") == 0) {
+            else if (strcmp(command, "edit CDPlay.prg") == 0 || strcmp(command, "edit.com CDPlay.prg") == 0) {
                 editor(6);
             }
             // cd and the subcommands
@@ -334,7 +334,7 @@ int main(int argc, const char * argv[]) {
             else if (strcmp(command, "cd OS") == 0 || strcmp(command, "cd.com OS") == 0) {
                 wprintw(win, "Access denied.\n");
             }
-            else if (strcmp(command, "CDPlay.com") == 0 || strcmp(command, "CDPlay") == 0 || strcmp(command, "cdplay.com") == 0 || strcmp(command, "cdplay") == 0) {
+            else if (strcmp(command, "CDPlay.prg") == 0 || strcmp(command, "CDPlay") == 0 || strcmp(command, "cdplay.prg") == 0 || strcmp(command, "cdplay") == 0) {
                 wprintw(win, "No capable CD drives were detected.\n");
                 sleep(1000);
                 wrefresh(win);
