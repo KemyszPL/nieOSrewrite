@@ -286,7 +286,7 @@ int main(int argc, const char * argv[]) {
         while (true) {
             char* command = new char[160];
             std::string commandstr(command);
-            wprintw(win, "C:/");
+            wprintw(win, "sda1/>");
             wrefresh(win);
             wgetstr(win, command);
             // help and the subcommands
@@ -304,6 +304,16 @@ int main(int argc, const char * argv[]) {
             }
             else if (strcmp(command, "dir") == 0 || strcmp(command, "ls") == 0 || strcmp(command, "dir.com") == 0 || strcmp(command, "ls.com") == 0 ) {
                 wprintw(win, "17:00  28.08.2020    <FOLDER>    OS\n14:03  28.08.2020          1K    exit.com\n14:04  28.08.2020        200K    dir.com\n14:24  28.08.2020          1M    aliases.dat\n17:00  28.08.2020          4M    edit.com\n17:00  28.08.2020        200K    help.com\n17:00  28.08.2020         10M    CDPlay.prg\n");
+            }
+            else if (strcmp(command, "CDPlay.prg") == 0 || strcmp(command, "CDPlay") == 0 || strcmp(command, "cdplay.prg") == 0 || strcmp(command, "cdplay") == 0) {
+                wprintw(win, "No capable CD drives were detected.\n");
+                sleep(1000);
+                wrefresh(win);
+            }
+            else if (strcmp(command, "cee dee playe") == 0) {
+                wprintw(win, "noe capabel cee dee draives wear detected!!!!!!!\n");
+                sleep(1000);
+                wrefresh(win);
             }
             // edit and the files it can open
             else if (strcmp(command, "edit") == 0 || strcmp(command, "edit.com") == 0) {
@@ -334,16 +344,6 @@ int main(int argc, const char * argv[]) {
             }
             else if (strcmp(command, "cd OS") == 0 || strcmp(command, "cd.com OS") == 0) {
                 wprintw(win, "Access denied.\n");
-            }
-            else if (strcmp(command, "CDPlay.prg") == 0 || strcmp(command, "CDPlay") == 0 || strcmp(command, "cdplay.prg") == 0 || strcmp(command, "cdplay") == 0) {
-                wprintw(win, "No capable CD drives were detected.\n");
-                sleep(1000);
-                wrefresh(win);
-            }
-            else if (strcmp(command, "cee dee playe") == 0) {
-                wprintw(win, "noe capabel cee dee draives wear detected!!!!!!!\n");
-                sleep(1000);
-                wrefresh(win);
             }
             else {
                 wprintw(win, "Command not found\n");
