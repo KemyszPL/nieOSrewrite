@@ -126,7 +126,7 @@ void editor(int fileToOpen) {
         case 4:
             mvwprintw(editborder, 0, 25, "nieOS editor - edit.com (read only)");
             wrefresh(editborder);
-            mvwprintw(editcontent, 0, 0, "©ńś©∑ęß†ß€į∑†®ęńś©∂ń©√©ś∂©ńś©∑Ō^ęńńŌ^ę∑ńń¨^∂ńś¨^ńńąś¨∂ńń¨Ō€ßń¨Ľ®Ńń€™Ľ∑Ōń∂¨Ľąń∂•	ńŌęń™Ń•Ľ®•∑ę∂śń^∂śąńńąśń∑^ęń∑ĶśžĘ„ŤžŃ„ĘŤŠŃ—ő£ŘŤŕÓ›ĘÁŕŘő„ľű žÓŤŽŚűžŃĄ‚ťÔŚń∂ąęś¨†ļń∑īęļ®īű‹Á¶™ļőÁ„£ŗĄŚžÓŚĄžĘÔŚųžŪťĄŚŽŪÓŽžŪūŚ«žÓŪūÓžŽĄūŚŪťÔ£„ĘŚÓ™Óő„ŚŤŻŹŃűžŤŃŽŚŤŃžťŚŽŃžŤ„Ń‹Ť£žŃ„ĘŚŤŠŽŪŗÁžśÓÁŤŪÁŤŪžŗŠŘÁŪÁłŪĘśŘŗ‚ÁŪłťÓGY)@*3gpyegy70tf&TY©¶†ńĽ¶†©ľ¶§ąńńąś∂©ń∑€ß¨ńęń¨Ľęń∂ś¨©ńś¨ń©ń¨∑ńęń¨Ľń∑ę¨Ľ®ń™€¨Ľ∑ńń∂¨Ľśńń¨Ľś∂ńń¨ąń∑¨Ľń€ę¨ńńśą¨Ľ∂ńń¨Ľń©ń¨Ľęń®¨©ń€™¨Ľßń®¨ńś∂©ĽńśĽ¨©ń¨ę∑Ľ®ń†¨ĽŌ€ńß®¨Ľń∂śąśńńĽ¨ń∂Ż©ńśęó∆†ń€ß^†ń®∑ń^∂śń©ľ^€ßĶń†^®ńĽś∂ń^ń∆¨ķ¨ī√ń†¨©īŻ∂ķ∆ŻķŌą^∆ķ¨ķ©ey89ļ©īĽ¶©•†ļńń®į∂∑įśßęr5tugiybhzjnīĽ©īĽ¶©Ľ†ń¶į®∂ßŌ");
+            mvwprintw(editcontent, 0, 0, "©ńś©∑ęß†ß€į∑†®ęńś©∂ń©√©ś∂©ńś©∑Ō^ęńńŌ^ę∑ńń¨^∂ńś¨^ńńąś¨∂ńń¨Ō€ßń¨Ľ®Ńń€™Ľ∑Ōń∂¨Ľąń∂•    ńŌęń™Ń•Ľ®•∑ę∂śń^∂śąńńąśń∑^ęń∑ĶśžĘ„ŤžŃ„ĘŤŠŃ—ő£ŘŤŕÓ›ĘÁŕŘő„ľű žÓŤŽŚűžŃĄ‚ťÔŚń∂ąęś¨†ļń∑īęļ®īű‹Á¶™ļőÁ„£ŗĄŚžÓŚĄžĘÔŚųžŪťĄŚŽŪÓŽžŪūŚ«žÓŪūÓžŽĄūŚŪťÔ£„ĘŚÓ™Óő„ŚŤŻŹŃűžŤŃŽŚŤŃžťŚŽŃžŤ„Ń‹Ť£žŃ„ĘŚŤŠŽŪŗÁžśÓÁŤŪÁŤŪžŗŠŘÁŪÁłŪĘśŘŗ‚ÁŪłťÓGY)@*3gpyegy70tf&TY©¶†ńĽ¶†©ľ¶§ąńńąś∂©ń∑€ß¨ńęń¨Ľęń∂ś¨©ńś¨ń©ń¨∑ńęń¨Ľń∑ę¨Ľ®ń™€¨Ľ∑ńń∂¨Ľśńń¨Ľś∂ńń¨ąń∑¨Ľń€ę¨ńńśą¨Ľ∂ńń¨Ľń©ń¨Ľęń®¨©ń€™¨Ľßń®¨ńś∂©ĽńśĽ¨©ń¨ę∑Ľ®ń†¨ĽŌ€ńß®¨Ľń∂śąśńńĽ¨ń∂Ż©ńśęó∆†ń€ß^†ń®∑ń^∂śń©ľ^€ßĶń†^®ńĽś∂ń^ń∆¨ķ¨ī√ń†¨©īŻ∂ķ∆ŻķŌą^∆ķ¨ķ©ey89ļ©īĽ¶©•†ļńń®į∂∑įśßęr5tugiybhzjnīĽ©īĽ¶©Ľ†ń¶į®∂ßŌ");
             wrefresh(editcontent);
             box(editerror, 0, 0);
             mvwprintw(editerror, 2, 2, "The selected file is too big to display.");
@@ -207,7 +207,7 @@ int main(int argc, const char * argv[]) {
         wrefresh(loadbox);
         curs_set(0); // makes the cursor hidden
         mvwprintw(win, 9, 33, "nieOS");
-        mvwprintw(win, 23, 69, "Build 61");
+        mvwprintw(win, 23, 69, "Build 64");
         wrefresh(win);
         box(loadbox, 0, 0);
         mvwprintw(loadbox, 1, 1, "#");
@@ -266,7 +266,7 @@ int main(int argc, const char * argv[]) {
         sleep(431);
         wclear(loadbox);
         wclear(win);
-        mvwprintw(win, 23, 69, "Build 61");
+        mvwprintw(win, 23, 69, "Build 64");
         wrefresh(loadbox);
         wrefresh(win);
         move(0, 0);
@@ -282,6 +282,7 @@ int main(int argc, const char * argv[]) {
         scrollok(win, 1);
         idlok(win, 1);
         curs_set(1);
+        wprintw(win, "Welcome to nieOS!\nPlease submit a bug on GitHub if you notice any.\n");
         while (true) {
             char* command = new char[160];
             std::string commandstr(command);
@@ -336,6 +337,11 @@ int main(int argc, const char * argv[]) {
             }
             else if (strcmp(command, "CDPlay.prg") == 0 || strcmp(command, "CDPlay") == 0 || strcmp(command, "cdplay.prg") == 0 || strcmp(command, "cdplay") == 0) {
                 wprintw(win, "No capable CD drives were detected.\n");
+                sleep(1000);
+                wrefresh(win);
+            }
+            else if (strcmp(command, "cee dee playe") == 0) {
+                wprintw(win, "noe capabel cee dee draives wear detected!!!!!!!\n");
                 sleep(1000);
                 wrefresh(win);
             }
