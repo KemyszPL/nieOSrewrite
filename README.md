@@ -4,12 +4,14 @@ This is a rewrite of nieOS using ncurses and (hopefully) more efficient methods.
 
 Features:
   - The login window
+  - "Command interpreter"
   
 Commands:
   - exit
   - help
-  - edit (work in progress)
+  - edit
   - dir/ls
+  - CDPlay
 
 ## Compiling
 
