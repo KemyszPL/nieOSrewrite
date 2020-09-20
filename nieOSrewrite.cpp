@@ -346,7 +346,7 @@ int main(int argc, const char * argv[]) {
                 wprintw(win, "Access denied.\n");
             }
             else if (strcmp(command, "cd MOUNT") == 0 || strcmp(command, "cd.com MOUNT") == 0) {
-                wprintw(win, "Placeholder :)\n");
+                wprintw(win, "Placeholder :)\nThe only usable commands are 'dir/ls' and 'cd ..'");
                 while (true) {
                     wprintw(win, "sda1/MOUNT>");
                     wrefresh(win);
@@ -356,9 +356,11 @@ int main(int argc, const char * argv[]) {
                     }
                     if (strcmp(command, "dir") == 0 || strcmp(command, "ls") == 0) {
                         wprintw(win, "This folder does not contain any files/folders.\n");
+                        wrefresh(win);
                     }
                     else {
                         wprintw(win, "The specified file does not exist.\n");
+                        wrefresh(win);
                     }
                 }
             }
