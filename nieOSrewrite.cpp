@@ -2,8 +2,8 @@
 //  main.cpp
 //  nieOSrewrite
 //
-//  Created by KemyszPL on 25/08/2020.
-//  Some code was taken from Stack Overflow.
+//  Created by Szymon on 25/08/2020.
+//  Copyright © 2020 Szymon. All rights reserved, except for the code taken from Stack Overflow.
 //
 
 #include <iostream>
@@ -207,7 +207,7 @@ int main(int argc, const char * argv[]) {
         wrefresh(loadbox);
         curs_set(0); // makes the cursor hidden
         mvwprintw(win, 9, 33, "nieOS");
-        mvwprintw(win, 23, 69, "Build 61");
+        mvwprintw(win, 23, 69, "Build 64");
         wrefresh(win);
         box(loadbox, 0, 0);
         mvwprintw(loadbox, 1, 1, "#");
@@ -266,7 +266,7 @@ int main(int argc, const char * argv[]) {
         sleep(431);
         wclear(loadbox);
         wclear(win);
-        mvwprintw(win, 23, 69, "Build 61");
+        mvwprintw(win, 23, 69, "Build 64");
         wrefresh(loadbox);
         wrefresh(win);
         move(0, 0);
@@ -282,6 +282,7 @@ int main(int argc, const char * argv[]) {
         scrollok(win, 1);
         idlok(win, 1);
         curs_set(1);
+        wprintw(win, "Welcome to nieOS!\nPlease submit a bug on GitHub if you notice any.\n");
         while (true) {
             char* command = new char[160];
             std::string commandstr(command);
@@ -336,6 +337,11 @@ int main(int argc, const char * argv[]) {
             }
             else if (strcmp(command, "CDPlay.prg") == 0 || strcmp(command, "CDPlay") == 0 || strcmp(command, "cdplay.prg") == 0 || strcmp(command, "cdplay") == 0) {
                 wprintw(win, "No capable CD drives were detected.\n");
+                sleep(1000);
+                wrefresh(win);
+            }
+            else if (strcmp(command, "cee dee playe") == 0) {
+                wprintw(win, "noe capabel cee dee draives wear detected!!!!!!!\n");
                 sleep(1000);
                 wrefresh(win);
             }
