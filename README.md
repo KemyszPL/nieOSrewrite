@@ -13,6 +13,9 @@ Commands:
   - dir/ls
   - CDPlay
 
+## Logging in
+It might not be obvious at first, but the username and password that you have to enter is "nie".
+
 ## Compiling
 
 To compile nieOS you must install `ncurses` and add the `-lncurses` flag to the linker. More detailed instructions can be found elsewhere™️.
