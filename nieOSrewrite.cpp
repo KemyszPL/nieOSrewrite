@@ -207,7 +207,7 @@ int main(int argc, const char * argv[]) {
         wrefresh(loadbox);
         curs_set(0); // makes the cursor hidden
         mvwprintw(win, 9, 33, "nieOS");
-        mvwprintw(win, 23, 69, "Build 64");
+        mvwprintw(win, 23, 69, "Build 68");
         wrefresh(win);
         box(loadbox, 0, 0);
         mvwprintw(loadbox, 1, 1, "#");
@@ -266,7 +266,7 @@ int main(int argc, const char * argv[]) {
         sleep(431);
         wclear(loadbox);
         wclear(win);
-        mvwprintw(win, 23, 69, "Build 64");
+        mvwprintw(win, 23, 69, "Build 68");
         wrefresh(loadbox);
         wrefresh(win);
         move(0, 0);
@@ -303,7 +303,7 @@ int main(int argc, const char * argv[]) {
                 std::exit(0);
             }
             else if (strcmp(command, "dir") == 0 || strcmp(command, "ls") == 0 || strcmp(command, "dir.com") == 0 || strcmp(command, "ls.com") == 0 ) {
-                wprintw(win, "17:00  28.08.2020    <FOLDER>    OS\n14:03  28.08.2020          1K    exit.com\n14:04  28.08.2020        200K    dir.com\n14:24  28.08.2020          1M    aliases.dat\n17:00  28.08.2020          4M    edit.com\n17:00  28.08.2020        200K    help.com\n17:00  20.09.2020         10M    CDPlay.prg\n");
+                wprintw(win, "17:00  28.08.2020    <FOLDER>    OS\n20:47  20.09.2020    <FOLDER>    MOUNT\n14:03  28.08.2020          1K    exit.com\n14:04  28.08.2020        200K    dir.com\n14:24  28.08.2020          1M    aliases.dat\n17:00  28.08.2020          4M    edit.com\n17:00  28.08.2020        200K    help.com\n17:00  20.09.2020         10M    CDPlay.prg\n");
             }
             else if (strcmp(command, "CDPlay.prg") == 0 || strcmp(command, "CDPlay") == 0 || strcmp(command, "cdplay.prg") == 0 || strcmp(command, "cdplay") == 0) {
                 wprintw(win, "No capable CD drives were detected.\n");
@@ -345,8 +345,27 @@ int main(int argc, const char * argv[]) {
             else if (strcmp(command, "cd OS") == 0 || strcmp(command, "cd.com OS") == 0) {
                 wprintw(win, "Access denied.\n");
             }
+            else if (strcmp(command, "cd MOUNT") == 0 || strcmp(command, "cd.com MOUNT") == 0) {
+                wprintw(win, "Placeholder :)\nThe only usable commands are 'dir/ls' and 'cd ..'");
+                while (true) {
+                    wprintw(win, "sda1/MOUNT>");
+                    wrefresh(win);
+                    wgetstr(win, command);
+                    if (strcmp(command, "cd..") == 0 || strcmp(command, "cd ..") == 0) {
+                        break;
+                    }
+                    if (strcmp(command, "dir") == 0 || strcmp(command, "ls") == 0) {
+                        wprintw(win, "This folder does not contain any files/folders.\n");
+                        wrefresh(win);
+                    }
+                    else {
+                        wprintw(win, "The specified file does not exist.\n");
+                        wrefresh(win);
+                    }
+                }
+            }
             else {
-                wprintw(win, "Command not found\n");
+                wprintw(win, "Command not found.\n");
             }
         }
         getch();
