@@ -1,3 +1,5 @@
+# **PLEASE DO NOT USE THIS BUILD!!!*
+## This branch is archived because I like the github "network" graph. Please do not use this build as it is likely oudated.
 # nieOSrewrite
 
 This is a rewrite of nieOS using ncurses and (hopefully) more efficient methods.
