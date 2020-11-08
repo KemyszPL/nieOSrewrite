@@ -18,4 +18,4 @@ It might not be obvious at first, but the username and password that you have to
 
 ## Compiling
 
-To compile nieOS you must install `ncurses` and add the `-lncurses` flag to the linker. More detailed instructions can be found elsewhere™️.
+To compile nieOS you must install `ncurses` and add the `-lncurses` flag to the linker. It also currently uses libraries that make it only work on Linux so there's that. More detailed instructions can be found elsewhere™️.
