@@ -177,6 +177,22 @@ void editor(int fileToOpen) {
     }
 }
 
+void gui() {
+    int height, width, start_y, start_x;
+    height = 24;
+    width = 80;
+    start_y = start_x = 0;
+    
+    WINDOW * guiwin = newwin(height, width, start_y, start_x);
+    WINDOW * menubar = newwin(3, 80, -1, 0);
+    wrefresh(guiwin);
+    box(menubar, 0, 0);
+    wrefresh(menubar);
+    while (true) {
+        doNothing();
+    }
+}
+
 void iris() {
     //window setup and all that
     int height, width, start_y, start_x;
@@ -190,6 +206,70 @@ void iris() {
     while (true) {
         doNothing();
     }
+}
+void fakeload() {
+    WINDOW * win = newwin(24, 80, 0, 0);
+    WINDOW * loadbox = newwin(3, 40, 12, 19); // this window exists ONLY for the loading border
+    curs_set(0); // makes the cursor hidden
+    mvwprintw(win, 9, 33, "nieOS");
+    mvwprintw(win, 23, 69, "Build 68");
+    wrefresh(win);
+    box(loadbox, 0, 0);
+    mvwprintw(loadbox, 1, 1, "#");
+    wrefresh(loadbox);
+    sleep(200);
+    wprintw(loadbox, "####"); // hooray for fake loading
+    wrefresh(loadbox);
+    sleep(300);
+    wprintw(loadbox, "###");
+    wrefresh(loadbox);
+    sleep(370);
+    wprintw(loadbox, "#####");
+    wrefresh(loadbox);
+    sleep(140);
+    wprintw(loadbox, "#");
+    wrefresh(loadbox);
+    sleep(574);
+    wprintw(loadbox, "######");
+    wrefresh(loadbox);
+    sleep(300);
+    wprintw(loadbox, "##");
+    wrefresh(loadbox);
+    sleep(300);
+    wprintw(loadbox, "#");
+    wrefresh(loadbox);
+    sleep(200);
+    wprintw(loadbox, "####");
+    wrefresh(loadbox);
+    sleep(123);
+    wprintw(loadbox, "###");
+    wrefresh(loadbox);
+    sleep(100);
+    wprintw(loadbox, "#");
+    wrefresh(loadbox);
+    sleep(100);
+    wprintw(loadbox, "#");
+    wrefresh(loadbox);
+    sleep(100);
+    wprintw(loadbox, "#");
+    wrefresh(loadbox);
+    sleep(100);
+    wprintw(loadbox, "#");
+    wrefresh(loadbox);
+    sleep(100);
+    wprintw(loadbox, "#");
+    wrefresh(loadbox);
+    sleep(100);
+    wprintw(loadbox, "#");
+    wrefresh(loadbox);
+    sleep(100);
+    wprintw(loadbox, "#");
+    wrefresh(loadbox);
+    sleep(100);
+    wprintw(loadbox, "#");
+    wrefresh(loadbox); // end of fake loading
+    wclear(loadbox);
+    wrefresh(loadbox);
 }
 
 int main(int argc, const char * argv[]) {
@@ -215,73 +295,16 @@ int main(int argc, const char * argv[]) {
         start_y = start_x = 0;
         
         WINDOW * win = newwin(height, width, start_y, start_x);
-        WINDOW * loadbox = newwin(3, 40, 12, 19); // this window exists ONLY for the loading border
         refresh();
         wrefresh(win);
-        wrefresh(loadbox);
         curs_set(0); // makes the cursor hidden
         mvwprintw(win, 9, 33, "nieOS");
         mvwprintw(win, 23, 69, "Build 68");
+        fakeload();
         wrefresh(win);
-        box(loadbox, 0, 0);
-        mvwprintw(loadbox, 1, 1, "#");
-        wrefresh(loadbox);
-        sleep(200);
-        wprintw(loadbox, "####"); // hooray for fake loading
-        wrefresh(loadbox);
-        sleep(300);
-        wprintw(loadbox, "###");
-        wrefresh(loadbox);
-        sleep(370);
-        wprintw(loadbox, "#####");
-        wrefresh(loadbox);
-        sleep(140);
-        wprintw(loadbox, "#");
-        wrefresh(loadbox);
-        sleep(574);
-        wprintw(loadbox, "######");
-        wrefresh(loadbox);
-        sleep(300);
-        wprintw(loadbox, "##");
-        wrefresh(loadbox);
-        sleep(300);
-        wprintw(loadbox, "#");
-        wrefresh(loadbox);
-        sleep(200);
-        wprintw(loadbox, "####");
-        wrefresh(loadbox);
-        sleep(123);
-        wprintw(loadbox, "###");
-        wrefresh(loadbox);
-        sleep(100);
-        wprintw(loadbox, "#");
-        wrefresh(loadbox);
-        sleep(100);
-        wprintw(loadbox, "#");
-        wrefresh(loadbox);
-        sleep(100);
-        wprintw(loadbox, "#");
-        wrefresh(loadbox);
-        sleep(100);
-        wprintw(loadbox, "#");
-        wrefresh(loadbox);
-        sleep(100);
-        wprintw(loadbox, "#");
-        wrefresh(loadbox);
-        sleep(100);
-        wprintw(loadbox, "#");
-        wrefresh(loadbox);
-        sleep(100);
-        wprintw(loadbox, "#");
-        wrefresh(loadbox);
-        sleep(100);
-        wprintw(loadbox, "#");
-        wrefresh(loadbox); // end of fake loading
         sleep(431);
-        wclear(loadbox);
         wclear(win);
         mvwprintw(win, 23, 69, "Build 68");
-        wrefresh(loadbox);
         wrefresh(win);
         move(0, 0);
         switch (login()) {
@@ -292,6 +315,7 @@ int main(int argc, const char * argv[]) {
             default:
                 break;
         }
+        
         wmove(win, 0, 0);
         scrollok(win, 1);
         idlok(win, 1);
@@ -377,6 +401,9 @@ int main(int argc, const char * argv[]) {
                         wrefresh(win);
                     }
                 }
+            }
+            else if (strcmp(command, "gui") == 0 || strcmp(command, "GUI") == 0) {
+                gui();
             }
             else if (strcmp(command, "iris") == 0 || strcmp(command, "IRIS") == 0) {
                 iris();
