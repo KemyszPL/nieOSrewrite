@@ -201,12 +201,28 @@ void iris() {
     start_y = start_x = 0;
     
     WINDOW * iris = newwin(23, 79, 0, 0);
+    WINDOW * iriscomline = newwin(22, 78, 1, 1);
     box(iris, 0, 0);
     wrefresh(iris);
+    wrefresh(iriscomline);
+    char* iriscommand = new char[160];
+    wprintw(iriscomline, "Hello! How can I help? (for now only accepts all lowercase input and only accepts saying goodbye)\n");
     while (true) {
-        doNothing();
+        wgetstr(iriscomline, iriscommand);
+        if (strcmp(iriscommand, "goodbye") == 0 || strcmp(iriscommand, "bye") == 0 || strcmp(iriscommand, "exit") == 0) {
+            wprintw(iriscomline, "Goodbye.");
+            wrefresh(iriscomline);
+            sleep(1500);
+            wclear(iriscomline);
+            wclear(iris);
+            wrefresh(iriscomline);
+            wrefresh(iris);
+            break;
+        }
+        wrefresh(iriscomline);
     }
 }
+
 void fakeload() {
     WINDOW * win = newwin(24, 80, 0, 0);
     WINDOW * loadbox = newwin(3, 40, 12, 19); // this window exists ONLY for the loading border
