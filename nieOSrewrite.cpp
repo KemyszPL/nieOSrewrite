@@ -177,6 +177,9 @@ void editor(int fileToOpen) {
     }
 }
 
+void iris() {
+    doNothing();
+}
 
 int main(int argc, const char * argv[]) {
     // insert code here...
@@ -363,6 +366,9 @@ int main(int argc, const char * argv[]) {
                         wrefresh(win);
                     }
                 }
+            }
+            else if (strcmp(command, "iris") == 0 || strcmp(command, "IRIS") == 0) {
+                iris();
             }
             else {
                 wprintw(win, "Command not found.\n");
