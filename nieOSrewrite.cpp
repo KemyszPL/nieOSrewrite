@@ -178,7 +178,18 @@ void editor(int fileToOpen) {
 }
 
 void iris() {
-    doNothing();
+    //window setup and all that
+    int height, width, start_y, start_x;
+    height = 23;
+    width = 79;
+    start_y = start_x = 0;
+    
+    WINDOW * iris = newwin(23, 79, 0, 0);
+    box(iris, 0, 0);
+    wrefresh(iris);
+    while (true) {
+        doNothing();
+    }
 }
 
 int main(int argc, const char * argv[]) {
